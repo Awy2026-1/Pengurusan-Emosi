@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengurusan Emosi - Panduan Interaktif</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🧠 Pengurusan Emosi</h1>
+                <p class="tagline">Memahami dan Menguruskan Emosi Anda dengan Lebih Baik</p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-btn active" onclick="goToSection('home')">Laman Utama</button>
+            <button class="nav-btn" onclick="goToSection('selftest')">Uji Emosi Anda</button>
+            <button class="nav-btn" onclick="goToSection('game')">Cari Punca</button>
+            <button class="nav-btn" onclick="goToSection('calming')">Tenangkan Diri</button>
+            <button class="nav-btn" onclick="goToSection('feedback')">Padlet Pemikiran</button>
+        </nav>
+
+        <!-- Content Sections -->
+        <main class="content">
+
+            <!-- 1. HOME SECTION -->
+            <section id="home" class="section active">
+                <div class="section-content">
+                    <h2>Selamat Datang</h2>
+                    <p>Emosi adalah bahagian penting dalam kehidupan kita. Kadang-kadang, kita mungkin merasa tertekan, marah, sedih, atau cemas. Laman web ini dirancang untuk membantu anda:</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h3>Uji Emosi Anda</h3>
+                            <p>Kenal pasti emosi yang anda sedang alami melalui kuis kendiri yang mudah.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🎮</div>
+                            <h3>Cari Punca Emosi</h3>
+                            <p>Mainkan permainan interaktif untuk menemui punca emosi anda.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🧘</div>
+                            <h3>Teknik Menenangkan</h3>
+                            <p>Pelajari dan praktikkan teknik-teknik menenangkan diri yang terbukti berkesan.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">💬</div>
+                            <h3>Kongsi Pengalaman</h3>
+                            <p>Tulis pemikiran anda dan baca pengalaman orang lain di Padlet Pemikiran.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Mengapa Pengurusan Emosi Penting?</h3>
+                        <ul>
+                            <li>✓ Membantu anda memahami perasaan dengan lebih mendalam</li>
+                            <li>✓ Meningkatkan kesejahteraan mental dan emosi</li>
+                            <li>✓ Memberikan alat dan teknik untuk mengatasi situasi yang sukar</li>
+                            <li>✓ Meningkatkan hubungan sosial yang lebih sihat</li>
+                            <li>✓ Meningkatkan produktiviti dan kemampuan membuat keputusan</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. SELF-TEST SECTION -->
+            <section id="selftest" class="section">
+                <div class="section-content">
+                    <h2>📊 Uji Emosi Anda</h2>
+                    <p>Jawab soalan-soalan di bawah untuk mengetahui emosi yang anda sedang alami.</p>
+
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h3>1. Bagaimanakah perasaan anda pada masa ini?</h3>
+                            <div class="emotion-buttons">
+                                <button class="emotion-btn" onclick="recordEmotion('gembira')">😊 Gembira</button>
+                                <button class="emotion-btn" onclick="recordEmotion('sedih')">😢 Sedih</button>
+                                <button class="emotion-btn" onclick="recordEmotion('marah')">😠 Marah</button>
+                                <button class="emotion-btn" onclick="recordEmotion('cemas')">😰 Cemas</button>
+                                <button class="emotion-btn" onclick="recordEmotion('penat')">😴 Penat</button>
+                                <button class="emotion-btn" onclick="recordEmotion('neutral')">😐 Neutral</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h3>2. Pada skala 1-10, berapa seriuskah emosi anda?</h3>
+                            <div class="intensity-slider">
+                                <input type="range" min="1" max="10" value="5" id="emotionIntensity" onchange="updateIntensity()">
+                                <div class="intensity-display">
+                                    <span id="intensityValue">5</span> / 10
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h3>3. Berapa lama anda telah berasa seperti ini?</h3>
+                            <div class="duration-options">
+                                <button class="option-btn" onclick="recordDuration('lessMinus')">Kurang dari 1 jam</button>
+                                <button class="option-btn" onclick="recordDuration('1-6')">1-6 jam</button>
+                                <button class="option-btn" onclick="recordDuration('6-24')">6-24 jam</button>
+                                <button class="option-btn" onclick="recordDuration('moreThan24')">Lebih dari 24 jam</button>
+                            </div>
+                        </div>
+
+                        <button class="primary-btn" onclick="showTestResult()">Lihat Hasil Uji Saya</button>
+                    </div>
+
+                    <div id="testResult" class="test-result hidden">
+                        <h3>Hasil Uji Anda</h3>
+                        <div class="result-box">
+                            <p id="emotionResult"></p>
+                            <p id="durationResult"></p>
+                            <p id="intensityResult"></p>
+                            <p class="result-advice"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. GAME SECTION - Cari Punca -->
+            <section id="game" class="section">
+                <div class="section-content">
+                    <h2>🎮 Cari Punca Emosi Anda</h2>
+                    <p>Mainkan permainan ini untuk membantu anda mengenal pasti punca emosi anda.</p>
+
+                    <div class="game-container">
+                        <div id="gameLevel1" class="game-level">
+                            <h3>Tahap 1: Pilih Kategori Punca</h3>
+                            <p>Berikut adalah kategori-kategori umum. Pilih yang paling relevan dengan anda:</p>
+                            <div class="game-choices">
+                                <button class="game-btn" onclick="selectCategory('personal')">👤 Peribadi<br><small>(kesihatan, penampilan, kepercayaan diri)</small></button>
+                                <button class="game-btn" onclick="selectCategory('relationship')">❤️ Hubungan<br><small>(keluarga, rakan, pasangan)</small></button>
+                                <button class="game-btn" onclick="selectCategory('work')">💼 Kerja/Sekolah<br><small>(tugas, tekanan, prestasi)</small></button>
+                                <button class="game-btn" onclick="selectCategory('social')">👥 Sosial<br><small>(persahabatan, komuniti, kesunyian)</small></button>
+                                <button class="game-btn" onclick="selectCategory('financial')">💰 Kewangan<br><small>(wang, kebimbangan, hutang)</small></button>
+                                <button class="game-btn" onclick="selectCategory('other')">🌍 Lain-lain<br><small>(alam sekitar, peristiwa, masa depan)</small></button>
+                            </div>
+                        </div>
+
+                        <div id="gameLevel2" class="game-level hidden">
+                            <h3>Tahap 2: Pilih Punca Lebih Spesifik</h3>
+                            <p id="categoryQuestion"></p>
+                            <div class="game-choices" id="categoryOptions"></div>
+                            <button class="secondary-btn" onclick="backToLevel1()">← Kembali</button>
+                        </div>
+
+                        <div id="gameResult" class="game-result hidden">
+                            <h3>🎯 Punca Emosi Anda Ditemui!</h3>
+                            <div class="result-message">
+                                <p id="resultMessage"></p>
+                                <div class="emotion-severity">
+                                    <p>Seberapa seriuskah masalah ini?</p>
+                                    <input type="range" min="1" max="10" value="5" id="severitySlider">
+                                    <span id="severityDisplay">5/10</span>
+                                </div>
+                            </div>
+                            <button class="primary-btn" onclick="checkSeverity()">Seterusnya</button>
+                            <button class="secondary-btn" onclick="resetGame()">Mula Semula</button>
+                        </div>
+
+                        <div id="needsHelp" class="needs-help hidden">
+                            <h3>Masalah Ini Memerlukan Bantuan Lebih Lanjut</h3>
+                            <p id="helpMessage"></p>
+                            <button class="primary-btn" onclick="goToSection('calming')">👉 Mari Belajar Teknik Menenangkan</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. CALMING TECHNIQUES SECTION -->
+            <section id="calming" class="section">
+                <div class="section-content">
+                    <h2>🧘 Tenangkan Diri Anda - Teknik-Teknik Interaktif</h2>
+                    <p>Jika emosi anda masih terasa berat selepas mengenalpasti puncanya, coba teknik-teknik menenangkan ini:</p>
+
+                    <div class="tabs">
+                        <button class="tab-btn active" onclick="switchTechnique('breathing')">🌬️ Nafas</button>
+                        <button class="tab-btn" onclick="switchTechnique('grounding')">🌍 Grounding</button>
+                        <button class="tab-btn" onclick="switchTechnique('mindfulness')">🧠 Kesedaran Minda</button>
+                        <button class="tab-btn" onclick="switchTechnique('movement')">🏃 Pergerakan</button>
+                        <button class="tab-btn" onclick="switchTechnique('journaling')">📝 Penulisan Jurnal</button>
+                    </div>
+
+                    <div class="technique-content">
+                        <!-- Breathing Technique -->
+                        <div id="breathing" class="technique active">
+                            <h3>Teknik Pernafasan 4-7-8</h3>
+                            <p>Teknik ini terbukti berkesan untuk menenangkan sistem saraf. Ikuti arahan di bawah:</p>
+                            <button class="primary-btn" onclick="startBreathingExercise()">Mulai Latihan Pernafasan</button>
+                            <div id="breathingExercise" class="breathing-exercise hidden">
+                                <div class="breath-circle" id="breathCircle"></div>
+                                <div class="breath-instruction" id="breathInstruction">Sediakan diri anda...</div>
+                                <div class="breath-counter">
+                                    <span id="roundCounter">Pusingan: 1/4</span>
+                                </div>
+                                <button class="secondary-btn" onclick="stopBreathingExercise()">Berhenti</button>
+                            </div>
+                        </div>
+
+                        <!-- Grounding Technique -->
+                        <div id="grounding" class="technique hidden">
+                            <h3>Teknik 5-4-3-2-1 (Grounding)</h3>
+                            <p>Teknik ini membantu anda kembali ke realiti dengan melibatkan semua deria anda.</p>
+                            <button class="primary-btn" onclick="startGroundingExercise()">Mulai Teknik Grounding</button>
+                            <div id="groundingExercise" class="grounding-exercise hidden">
+                                <div class="grounding-step" id="groundingStep"></div>
+                                <div class="grounding-response">
+                                    <textarea id="groundingInput" placeholder="Tulis jawapan anda di sini..." rows="4"></textarea>
+                                    <button class="secondary-btn" onclick="nextGroundingStep()">Seterusnya (→)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mindfulness Technique -->
+                        <div id="mindfulness" class="technique hidden">
+                            <h3>Latihan Kesedaran Minda - Imbasan Badan</h3>
+                            <p>Latihan ini membantu anda fokus pada badan dan menenangkan pikiran. Tempoh: 5 minit.</p>
+                            <button class="primary-btn" onclick="startMindfulnessExercise()">Mulai Latihan</button>
+                            <div id="mindfulnessExercise" class="mindfulness-exercise hidden">
+                                <div class="guided-text" id="guidedText"></div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                <div class="time-display" id="timeDisplay">5:00</div>
+                                <button class="secondary-btn" onclick="stopMindfulnessExercise()">Berhenti</button>
+                            </div>
+                        </div>
+
+                        <!-- Movement Technique -->
+                        <div id="movement" class="technique hidden">
+                            <h3>Pergerakan dan Regangan Badan</h3>
+                            <p>Aktiviti fizikal membantu melepaskan ketegangan. Pilih jenis pergerakan:</p>
+                            <div class="movement-options">
+                                <button class="option-btn" onclick="startMovement('stretch')">🤸 Regangan Mudah (3 min)</button>
+                                <button class="option-btn" onclick="startMovement('walk')">🚶 Berjalan Tenang (5 min)</button>
+                                <button class="option-btn" onclick="startMovement('dance')">💃 Menari Ringan (3 min)</button>
+                                <button class="option-btn" onclick="startMovement('yoga')">🧘 Yoga Ringkas (5 min)</button>
+                            </div>
+                            <div id="movementGuide" class="movement-guide hidden">
+                                <div class="instruction-card" id="movementInstruction"></div>
+                                <button class="secondary-btn" onclick="stopMovement()">Selesai</button>
+                            </div>
+                        </div>
+
+                        <!-- Journaling Technique -->
+                        <div id="journaling" class="technique hidden">
+                            <h3>Penulisan Jurnal Terapeutik</h3>
+                            <p>Tulis apa yang anda rasakan tanpa had. Ini membantu anda memproses emosi.</p>
+                            <div class="journaling-section">
+                                <textarea id="journalEntry" placeholder="Mulai menulis di sini... Tidak perlu sempurna, hanya tulis apa yang anda rasakan." rows="10"></textarea>
+                                <div class="journal-buttons">
+                                    <button class="primary-btn" onclick="saveJournal()">💾 Simpan Jurnal</button>
+                                    <button class="secondary-btn" onclick="clearJournal()">🗑️ Padam</button>
+                                </div>
+                                <div id="journalFeedback" class="feedback-message hidden"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. PADLET SECTION -->
+            <section id="feedback" class="section">
+                <div class="section-content">
+                    <h2>💬 Padlet Pemikiran - Kongsi & Baca</h2>
+                    <p>Tulis pemikiran, pengalaman, atau soalan anda. Baca pengalaman orang lain dan rasakan bahawa anda tidak sendirian.</p>
+
+                    <div class="padlet-section">
+                        <!-- Post Form -->
+                        <div class="post-form">
+                            <h3>📝 Tulis Pemikiran Anda</h3>
+                            <div class="form-group">
+                                <input type="text" id="userName" placeholder="Nama anda (pilihan)" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <select id="postType" class="form-input">
+                                    <option value="">- Pilih Jenis Pos -</option>
+                                    <option value="experience">Pengalaman</option>
+                                    <option value="tip">Tip Berguna</option>
+                                    <option value="question">Soalan</option>
+                                    <option value="success">Cerita Kejayaan</option>
+                                    <option value="support">Meminta Sokongan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="postContent" placeholder="Tulis pemikiran anda di sini... (Sila hormati privasi dan keadaban)" rows="6" class="form-textarea"></textarea>
+                            </div>
+                            <button class="primary-btn" onclick="submitPost()">Pos (Hantar)</button>
+                        </div>
+
+                        <!-- Posts Display -->
+                        <div class="posts-display">
+                            <h3>📌 Semua Pos</h3>
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" onclick="filterPosts('all')">Semua</button>
+                                <button class="filter-btn" onclick="filterPosts('experience')">Pengalaman</button>
+                                <button class="filter-btn" onclick="filterPosts('tip')">Tip</button>
+                                <button class="filter-btn" onclick="filterPosts('question')">Soalan</button>
+                                <button class="filter-btn" onclick="filterPosts('success')">Kejayaan</button>
+                            </div>
+                            <div id="postsList" class="posts-list">
+                                <p class="empty-state">Belum ada pos lagi. Jadilah yang pertama untuk berkongsi! 🌟</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Pengurusan Emosi - Platform Pembelajaran Interaktif</p>
+            <p>💡 Ingatan: Jika anda merasa sangat tertekan atau mempunyai pemikiran berbahaya, sila hubungi profesional kesihatan mental.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
